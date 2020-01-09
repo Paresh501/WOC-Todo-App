@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<body >
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-effect waves-light red" href="/new_task"><i class="material-icons">add</i></a>
+    </div>
+    <div class="row">
+        {%for task in tasks%}
+        <div class="card">
+          
+            <div class="col s12 m12">
+                <div class="card transparent z-depth-2">
+                  <div class="card-content">
+                    <div class="card-title"> <strong>{{task.task_title}} </strong></div>
+                    <p>{{task.task_content|safe}}</p>
+                  </div>
+                  
+                  <div class="card-action">
+                      <a href="{% url 'main:edit_task' pk=task.pk%}"><i class="material-icons">edit</i></a>
+                      <a href="{% url 'main:delete_task' pk=task.pk%}"><i class="material-icons">delete</i></a>
+                      <a href="{% url 'main:mail_task' pk=task.pk%}"><i class="material-icons">mail</i></a>
+                      <a href="{% url 'main:pdf_download' pk=task.pk%}"><i class="material-icons">file_download</i></a>                
+                  </div>
+                </div>
+              </div>
+        </div>
+        {%endfor%}
+    </div>
+{% endblock %}

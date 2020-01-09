@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head>
+
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js"></script>
+
+        <style>
+            body {
+            background: rgb(235, 211, 211)
+            }
+
+            .card {
+                width:500px;
+                margin: 0 auto;
+                float: none; 
+                margin-bottom: 10px;
+                background: radial-gradient(circle, rgb(255, 249, 160), #ffe985 80%) !important;
+                font-size: 20px !important;
+                font-family: cursive;
+            }
+            .card-title {
+                font-size: 30px !important;
+                color: rgb(0, 0, 0) !important;
+            }
+            .card-action a {
+                font-size: 20px !important;
+                color: #000000 !important ;
+                font-weight: bold;
+            }
+            .fixed-action-btn{
+                position: fixed;
+                top : 70px;
+            }
+            .nav-wrapper {
+                background-color: #a52020 !important;
+                /*background-color: #a59820 !important;*/
+                font-weight: bold;
+            }
+            .input-field{
+                width: 300px !important;
+                margin: 3px 0 0 0 !important;
+            }
+            
+        </style>
+
+
+        <div class="navbar-fixed">
+            <nav>
+                <div class="nav-wrapper">
+                <a href="/homepage" class="brand-logo" style="margin: 0 0 0 20px; font-family: cursive;">TO-DO Notes</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">{{user.username}}</a></li>
+                    <li><a href="/homepage">Home</a></li>
+                    <li><a href="/change_password">Change Password</a></li>
+                    <li><a href="/logout_request">Logout</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+        
+        {% if messages %}
+            {% for message in messages %}
+            <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+            {% endfor %}
+        {% endif %}
+
+    </head> 
+
+    <body>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+    
+</html>

@@ -1,0 +1,38 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/login_css.css' %}">
+</head>
+
+<body>
+        <div class="login-page">
+            <div class="form">
+              <form method="POST" class="login-form">
+                {% csrf_token %}
+
+                {% if messages %}
+                  {% for message in messages %}
+                    <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+                    <p class="er_message"><strong>{{message}}</strong></p>
+                  {% endfor %}
+                {% endif %}
+
+                <p class="message"><strong>Username</strong></p>
+                {{form.username}}
+                <p class="message"><strong>Email</strong></p>
+                {{form.email}}
+                <p class="message"><strong>Password</strong></p>
+                {{form.password1}}
+                <p class="message"><strong>Confirm Password</strong></p>
+                {{form.password2}}
+                <ul>
+                  <li class="ps_message">Your password can't be too similar to your other information.</li>
+                  <li class="ps_message">Your password must contain at least 8 characters.</li>
+                  <li class="ps_message">Your password can't be a commonly used password.</li>
+                  <li class="ps_message">Your password can't be entirely numeric.</li>
+                </ul>
+                <button type="submit">sign in</button>
+                <p class="message"><strong>Already have an account ?</strong><a href="/"><strong>Log in</strong></a></p>
+              </form>
+            </div>
+        </div>
+</body>
